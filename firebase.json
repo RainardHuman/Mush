@@ -7,10 +7,12 @@
     "predeploy": [
       "npm --prefix \"$RESOURCE_DIR\" run lint",
       "npm --prefix \"$RESOURCE_DIR\" run build"
-    ]
+    ],
+    "source": "functions"
   },
   "hosting": {
-    "public": "dist",
+    "site": "coachmush",
+    "public": "dist/mush",
     "ignore": [
       "firebase.json",
       "**/.*",
