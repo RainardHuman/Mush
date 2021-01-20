@@ -1,0 +1,9 @@
+<div class="card">
+  <img *ngIf="image" [src]=image class="card-img-top" alt="">
+  <video *ngIf="video" [src]="video" class="card-img-top"></video>
+  <div class="card-body">
+    <h5 class="card-title">{{title}}</h5>
+    <p class="card-text">{{content}}</p>
+    <p class="card-text"><small class="text-muted">Last updated {{time | date:'medium'}}</small></p>
+  </div>
+</div>

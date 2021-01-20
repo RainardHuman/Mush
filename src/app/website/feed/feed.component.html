@@ -1,0 +1,9 @@
+<div class="card-columns">
+    <app-feed-card *ngFor="let feed of feeds"
+      [title]="feed.title"
+      [content]="feed.content"
+      [time]="feed.time"
+      [image]="feed.image"
+      [video]="feed.video"
+    ></app-feed-card>
+</div>
