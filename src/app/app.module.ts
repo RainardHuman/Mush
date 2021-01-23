@@ -1,6 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { environment } from '../environments/environment';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './website/home/home.component';
@@ -13,6 +20,10 @@ import { FeedManagerComponent } from './website/feed-manager/feed-manager.compon
 import { ContactComponent } from './website/contact/contact.component';
 import { FeedCardComponent } from './components/feed-card/feed-card.component';
 
+import { AuthService } from "./services/auth.firebase.service";
+import { FirestoreService } from "./services/firestore.firebase.service";
+import { StorageService } from "./services/storage.firebase.service";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,13 +35,17 @@ import { FeedCardComponent } from './components/feed-card/feed-card.component';
     FeedComponent,
     FeedManagerComponent,
     ContactComponent,
-    FeedCardComponent
+    FeedCardComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
   ],
-  providers: [],
+  providers: [AuthService, FirestoreService, StorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

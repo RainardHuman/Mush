@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "mush-d28b8"
+  },
+  "targets": {
+    "mush-d28b8": {
+      "hosting": {
+        "mush": [
+          "mush-d28b8"
+        ]
+      }
+    }
   }
 }

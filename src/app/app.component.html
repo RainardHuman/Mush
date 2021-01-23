@@ -1,9 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Coach Mush</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
+<nav class="navbar navbar-expand-lg" style="background-color: var(--app-navbar);">
+  <a class="navbar-brand" style="font-family: 'Segoe UI Symbol', sans-serif;" href="/">Coach Mush</a>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
@@ -16,7 +12,7 @@
         <a class="nav-link" href="/reviews">Reviews</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Admin
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -27,8 +23,27 @@
         </div>
       </li>
     </ul>
-<!--    add login profile here-->
   </div>
+  <span class="navbar-text">
+    <div class="dropleft" style="max-height: 80px;">
+      <div *ngIf="authService.user$ | async; then authenticated else guest"></div>
+      <ng-template #authenticated>
+        <img [src]=photoURL.value style="max-height: 70px; max-width: 70px; border: none" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style=" margin-top: 70px;">
+          <a class="dropdown-item" (click)="authService.signOut()">Log Out</a>
+      </div>
+      </ng-template>
+      <ng-template #guest>
+        <img src="assets/blank_profile.svg" style="max-height: 70px; max-width: 70px; border: none" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2" style=" margin-top: 70px;">
+          <a class="dropdown-item" href="/auth">Login</a>
+      </div>
+      </ng-template>
+    </div>
+  </span>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 </nav>
 <div class="container">
   <router-outlet></router-outlet>
