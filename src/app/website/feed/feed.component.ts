@@ -15,6 +15,7 @@ export class FeedComponent implements OnInit {
       .getFeeds()
       .subscribe(docs => {
         this.feeds = <Feed[]> firestore.getDataFromDocs(docs);
+        console.log(this.feeds);
       })
   }
 
